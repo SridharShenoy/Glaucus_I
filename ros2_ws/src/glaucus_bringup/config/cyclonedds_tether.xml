@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pin ROS 2 (DDS) traffic to the TETHER interface only.
+
+  Why: the topside machine is also the Wi-Fi access point for phones. By
+  default DDS multicasts discovery on every interface, so it would happily
+  spray robot telemetry and camera frames over Wi-Fi and fight with the app.
+  Phones never join the ROS graph - they talk to the web gateway over
+  HTTP/WebSocket instead (see docs/decisions/0004-webapp-via-gateway.md).
+
+  Use on BOTH the Pi and topside:
+    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export CYCLONEDDS_URI=file://$(ros2 pkg prefix glaucus_bringup)/share/glaucus_bringup/config/cyclonedds_tether.xml
+  and set the interface name below (`ip -br addr` shows it).
+-->
+<CycloneDDS xmlns="https://cdds.io/config">
+  <Domain id="any">
+    <General>
+      <Interfaces>
+        <!-- TODO(glaucus): eth0 on the Pi; the USB-Ethernet / tether adapter name on topside -->
+        <NetworkInterface name="eth0" priority="default" multicast="default" />
+      </Interfaces>
+      <AllowMulticast>spdp</AllowMulticast>
+    </General>
+  </Domain>
+</CycloneDDS>

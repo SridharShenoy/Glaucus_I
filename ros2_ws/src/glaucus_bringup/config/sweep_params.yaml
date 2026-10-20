@@ -1,0 +1,36 @@
+# Sweep parameters. Names match glaucus::SweepParams (C++) and SweepParams
+# (sim/sweep_sim.py) 1:1. If you tune something in the tank, copy the value
+# back into the sim too so the sim stays a faithful sandbox.
+sweep_executor:
+  ros__parameters:
+    brush_width: 0.30          # m        TODO(glaucus): measure the real brush
+    overlap: 0.20              # 20% of brush width overlaps the previous lane
+    first_lane_depth: 0.15     # m
+    max_depth: 1.15            # m        set per boat: draft - brush_width/2
+
+    lane_speed: 0.15           # m/s
+    step_speed: 0.08           # m/s
+
+    kp_depth: 2.0              # rad per m of depth error
+    ki_depth: 0.5
+    max_depth_correction: 0.35 # rad (~20 deg)
+    depth_integral_limit: 0.3
+    heading_tol: 0.05          # rad
+    depth_tol: 0.02            # m
+
+    w_camera: 0.6
+    w_stall: 0.6
+    end_threshold: 0.5
+    end_debounce_ticks: 4      # at 20 Hz = 0.2 s
+    max_lane_length: 15.0      # m, safety guard
+
+    verify_margin: 0.6         # m
+    verify_distance: 0.25      # m
+    verify_speed: 0.05         # m/s
+
+    shift_inward: 0.35         # m
+    max_step_retries: 3
+
+    stern_reset_x: 0.0         # m, x of the transom in the hull-side frame
+    use_optical_flow: true
+    link_timeout_s: 3.0

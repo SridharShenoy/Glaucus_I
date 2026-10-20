@@ -1,0 +1,19 @@
+# builds
+build/
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+firmware/.pio/
+__pycache__/
+*.pyc
+.venv/
+
+# data
+bags/
+*.mcap
+*.db3
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store

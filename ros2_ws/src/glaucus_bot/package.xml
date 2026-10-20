@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>glaucus_bot</name>
+  <version>0.1.0</version>
+  <description>On-robot (Raspberry Pi) nodes: sweep executor, MCU bridge, vision.</description>
+  <maintainer email="team@example.com">Glaucus I team</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>glaucus_interfaces</depend>
+  <depend>glaucus_core</depend>
+  <!-- <depend>cv_bridge</depend> TODO(glaucus): vision_node -->
+  <exec_depend>camera_ros</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,20 @@
+# Topside mission_manager (client) -> bot sweep_executor (server).
+#
+# DESIGN CHOICE: an action, not a topic/service, because a sweep is long,
+# reports progress, and can be cancelled. Pause/resume are separate std_srvs
+# (SetBool) on the executor so the app can toggle them without cancelling.
+
+# ---- goal ----
+float32 first_lane_depth     # m (0 = use param default)
+float32 max_depth            # m (0 = use param default)
+float32 overlap              # 0..1 (negative = use param default)
+int8 hull_side               # +1 starboard, -1 port
+---
+# ---- result ----
+bool completed               # false if aborted / faulted
+string reason
+int32 lanes
+float32 duration_s
+---
+# ---- feedback ----
+SweepStatus status

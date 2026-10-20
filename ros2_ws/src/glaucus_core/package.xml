@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>glaucus_core</name>
+  <version>0.1.0</version>
+  <description>ROS-free C++ core for Glaucus I: sweep state machine, end-of-lane detector, wall-frame estimator.</description>
+  <maintainer email="team@example.com">Glaucus I team</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <export>
+    <!-- Plain CMake package: no ament dependency, builds anywhere. -->
+    <build_type>cmake</build_type>
+  </export>
+</package>
