@@ -11,6 +11,7 @@ sweeps it in horizontal lanes like a lawnmower, and is supervised from a phone.
 pip install -r webapp/requirements.txt
 
 python3 sim/sweep_sim.py                    # simulate a sweep, writes docs/img/sweep_sim.png
+python3 sim/sim3d.py --html build/sim3d.html   # same sweep on a curved 3D hull (viewer needs: pip install plotly)
 python3 webapp/gateway/server.py --mock     # operator app at http://localhost:8000, driven by the sim
 ./tools/check_all.sh                        # every test that doesn't need ROS or hardware
 ```
@@ -40,6 +41,7 @@ Why it's split this way: [docs/architecture.md](docs/architecture.md) and
 
 ```
 sim/                 algorithm sandbox (Python). Change the algorithm HERE first.
+                     sim3d.py = the same controller on a curved 3D hull (docs/simulation.md)
 ros2_ws/src/
   glaucus_core/      the sweep logic in C++, no ROS, unit + parity tested
   glaucus_bot/       nodes on the Pi (thin wrappers around glaucus_core)

@@ -5,7 +5,7 @@ is much more expensive to debug than the one before.
 
 | # | Stage | Where | What runs | Pass when |
 |---|---|---|---|---|
-| 0 | Desk | Any laptop | `tools/check_all.sh`, sim, app in `--mock` | All checks pass; sim coverage ≥ 95% on 10 seeds |
+| 0 | Desk | Any laptop | `tools/check_all.sh`, sim (2D + 3D, see [simulation.md](simulation.md)), app in `--mock` | All checks pass; sim coverage ≥ 95% on 10 seeds |
 | 1 | Bench comms | Teensy on USB, no motors | firmware + mcu_bridge + executor | Telemetry at 100 Hz; unplug USB → watchdog fault within 200 ms |
 | 2 | Bench drive | Robot on blocks | + motors | Wheel speed loop tracks ±5%; e-stop from the app stops wheels < 0.3 s |
 | 3 | Dry wall | Vertical plywood/whiteboard | Heading loop, sweep with faked depth | Holds heading ±2°; full fake sweep completes on a taped-out "hull" |

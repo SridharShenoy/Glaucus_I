@@ -20,6 +20,9 @@ cov = float(re.search(r"coverage=([\d.]+)%", open(sys.argv[1]).read()).group(1))
 assert cov >= 95.0, f"coverage {cov}% < 95%"
 EOF
 
+step "3D simulator: geometry, plane == 2D sim, curved-hull sweep"
+python3 sim/test_sim3d.py
+
 step "committed parity trace is up to date"
 if ! cmp -s "$TMP/trace.csv" ros2_ws/src/glaucus_core/test/data/sim_trace_seed2.csv; then
   echo "Trace is stale. Regenerate with:"

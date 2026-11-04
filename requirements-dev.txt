@@ -1,0 +1,7 @@
+# Everything pip can provide for working in this repo. Setup: ./tools/setup_venv.sh
+# (ROS 2 Jazzy is NOT pip-installable; see README for the colcon workflow.)
+-r webapp/requirements.txt   # fastapi, uvicorn, numpy, matplotlib
+plotly>=5.20                 # interactive 3D viewer (sim/sim3d.py --html)
+cmake>=3.22                  # tools/check_all.sh builds glaucus_core with cmake + ctest
+pytest>=8                    # optional: sim/test_sim3d.py is also pytest-collectable
+platformio>=6.1              # firmware: cd firmware && pio run

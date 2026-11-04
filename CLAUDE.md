@@ -8,6 +8,7 @@ and is supervised from a phone. Four-person team, ~$2k budget (no DVL).
 Read these before non-trivial work:
 - `docs/architecture.md`: who runs what (MCU / Pi / topside / app) and why
 - `docs/sweep_algorithm.md`: the algorithm, explained from scratch
+- `docs/simulation.md`: which simulations exist / are needed, and the 3D environment
 - `docs/decisions/`: the reasons behind the big choices. Don't silently undo one;
   if you think one is wrong, say so and propose a new ADR.
 
@@ -38,6 +39,8 @@ Read these before non-trivial work:
 ./tools/check_all.sh                         # everything checkable without ROS/hardware. Run before finishing any task.
 python3 sim/sweep_sim.py                     # run the sweep sim, writes docs/img/sweep_sim.png
 python3 sim/sweep_sim.py --seed 7 --show     # other seeds, interactive plot
+python3 sim/sim3d.py [--html build/sim3d.html]   # 3D hull sim: same controller, curved hull (--hull plane = 2D control case)
+python3 sim/test_sim3d.py                    # its tests; the plane==2D-sim test must always pass
 python3 sim/sweep_sim.py --quiet --dump-trace ros2_ws/src/glaucus_core/test/data/sim_trace_seed2.csv   # regenerate parity trace
 python3 webapp/gateway/server.py --mock      # app on http://localhost:8000 driven by the sim
 
@@ -65,6 +68,7 @@ cd firmware && pio run && pio run -t upload
 | Part | Status |
 |---|---|
 | `sim/sweep_sim.py` | **Working.** Plant model, controller, three estimators, coverage, plots |
+| `sim/sim3d.py` | **Working + tested.** 3D hull kinematics, IMU/gravity model, area-weighted coverage. Imports the controller from `sweep_sim.py`; never fork the algorithm here. Hull dims are placeholders |
 | `glaucus_core` (controller, detector, estimator) | **Working + tested**, parity with the sim |
 | `shared/protocol` | **Working + tested** (COBS, CRC, packet layout) |
 | `firmware/` heading estimator + controller | **Working + host-tested** |
